@@ -23,11 +23,7 @@ public class ApiErrorHelper {
 
         if (e instanceof ConnectException) {
 
-            Toast.makeText(context, "服务器连接超时", Toast.LENGTH_SHORT).show();
-
         } else if (e instanceof SocketTimeoutException) {
-
-            Toast.makeText(context, "服务器响应超时", Toast.LENGTH_SHORT).show();
 
         } else if (e instanceof ApiException) {
             //ApiException处理
@@ -38,7 +34,6 @@ public class ApiErrorHelper {
         } else {
             Toast.makeText(context, "本地未知错误，一般都是解析数据格式错误"+e.getMessage(), Toast.LENGTH_SHORT).show();
 
-            Log.e("rrrrrrrrrrrr",e.getMessage());
         }
 
 

@@ -2,8 +2,17 @@ package xifuyin.tumour.com.a51ehealth.mvpdemo.base;
 
 import android.util.Log;
 
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2018/5/4.
@@ -53,7 +62,47 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
         if (mCompositeDisposable != null) {
             mCompositeDisposable.dispose();
             mCompositeDisposable.clear();
-            mCompositeDisposable =null;
+            mCompositeDisposable = null;
         }
     }
+
+
+    public <T> ObservableTransformer<T, T> LoadingDialog() {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream
+                        .doOnSubscribe((disposable) -> {
+                            View.showLoadingDialog();
+                        })
+                        .doFinally(() -> {
+                            View.dissmassLoadingDialog();
+                        });
+
+            }
+        };
+    }
+
+    public <T> ObservableTransformer<T, T> LoadingErrorView() {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream
+                        .doOnError((throwable -> {
+                            if (throwable instanceof ConnectException || throwable instanceof SocketTimeoutException) {
+                                View.showErrorView();
+                            }
+                        }))
+                        .doOnComplete(() -> {
+                            View.dissmassErrorView();
+                        })
+                        .doFinally(() -> {
+                            View.dissmassLoadingDialog();
+                        });
+
+            }
+        };
+    }
+
+
 }

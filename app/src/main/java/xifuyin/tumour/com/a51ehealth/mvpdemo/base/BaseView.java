@@ -16,4 +16,11 @@ public interface BaseView {
     void  dissmassLoadingDialog();
 
 
+
+    void showErrorView();
+
+
+
+    void dissmassErrorView();
+
 }
