@@ -75,9 +75,13 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
                 return upstream
                         .doOnSubscribe((disposable) -> {
                             View.showLoadingDialog();
+
+                            Log.e("rrrrrrrrrr1", Thread.currentThread().getName());
                         })
+                        .observeOn(AndroidSchedulers.mainThread())//事件订阅的线程
                         .doFinally(() -> {
                             View.dissmassLoadingDialog();
+                            Log.e("rrrrrrrrrr2", Thread.currentThread().getName());
                         });
 
             }
@@ -105,8 +109,6 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
             }
         };
     }
-
-
 
 
 }

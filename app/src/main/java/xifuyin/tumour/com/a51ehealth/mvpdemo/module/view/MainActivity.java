@@ -14,7 +14,7 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.module.contact.LoginContact;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.LoginPersenter;
 
-public class MainActivity extends BaseShowErrorActivity<LoginPersenter> implements View.OnClickListener, LoginContact.View {
+public class MainActivity extends BaseActivity<LoginPersenter> implements View.OnClickListener, LoginContact.View {
 
     private Button btn1;
     private TextView tv;
@@ -64,10 +64,6 @@ public class MainActivity extends BaseShowErrorActivity<LoginPersenter> implemen
     }
 
 
-    @Override
-    protected void onRetry() {
-        Persenter.getData();
-    }
 
 
 }
