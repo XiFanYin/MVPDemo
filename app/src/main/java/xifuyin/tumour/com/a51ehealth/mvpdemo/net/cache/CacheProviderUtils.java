@@ -1,5 +1,7 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.net.cache;
 
+import android.util.Log;
+
 import io.rx_cache2.internal.RxCache;
 import io.victoralbertos.jolyglot.GsonSpeaker;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.app.App;
@@ -37,7 +39,6 @@ public class CacheProviderUtils {
 
 
     public <T> T using(Class<T> cache) {
-
         return persistence.using(cache);
     }
 

@@ -34,20 +34,18 @@ public class LoginPersenter extends BasePresenterImpl<LoginContact.View> impleme
                 .getInstance()
                 .create(API.class)
                 .Login("yinfeilong", "88888888")
-                .subscribeOn(Schedulers.io())//指定联网请求的线程，事件产生的线程
-                .compose(LoadingDialog())//加载dialog的操作符
-                .compose(CacheCompose.cache("eee"))//如果需要缓存，添加这个操作符
-                .observeOn(AndroidSchedulers.mainThread())//事件订阅的线程
+                .compose(CacheCompose.cache("eee"))
+                .compose(RxSchedulers.io_main())
+                .compose(LoadingDialog())
                 .subscribe(new BaseObserver<LoginBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         addDisposable(d);//添加流的控制
                     }
-
                     @Override
                     public void onNext(LoginBean loginBean) {
                         View.setData(loginBean);
-                        Log.e("rrrrrrrrrr3", Thread.currentThread().getName());
+
                     }
 
                 });
