@@ -10,6 +10,8 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.dialog.LoadingDialog;
 
 /**
  * Created by Administrator on 2018/5/4.
+ * <p>
+ * 抽取BaseActivity，实现BaseView，规定统一的方法名字
  */
 
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
@@ -48,14 +50,15 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     protected void onDestroy() {
-
-        Persenter.detach();//在presenter中解绑释放view
-
+        //在presenter中解绑释放view
+        Persenter.detach();
         super.onDestroy();
 
     }
 
-
+    /**
+     * 加载中的dialog显示
+     */
     @Override
     public void showLoadingDialog() {
         dialog = new LoadingDialog(act);
@@ -65,6 +68,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     }
 
+    /**
+     * 加载完成的dialog消失
+     */
     @Override
     public void dissmassLoadingDialog() {
         if (dialog != null) {
@@ -75,11 +81,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     public void showErrorView() {
-
+        //这个基类没有封装这个需求，去控实现一下
     }
 
     @Override
     public void dissmassErrorView() {
-
+        //这个基类没有封装这个需求，去控实现一下
     }
 }

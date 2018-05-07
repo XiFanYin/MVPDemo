@@ -33,8 +33,8 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
 
     @Override
     public void detach() {
-        unDisposable();
-        this.View = null;
+        unDisposable();//切断流，防止rx内存泄漏，导致空指针
+        this.View = null;//释放View，防止内存泄露
 
     }
 
@@ -66,7 +66,8 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
         }
     }
 
-
+    //显示加载进度的提示
+    @Override
     public <T> ObservableTransformer<T, T> LoadingDialog() {
         return new ObservableTransformer<T, T>() {
             @Override
@@ -83,6 +84,7 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
         };
     }
 
+    //显示网络连接有问题的Ui
     public <T> ObservableTransformer<T, T> LoadingErrorView() {
         return new ObservableTransformer<T, T>() {
             @Override

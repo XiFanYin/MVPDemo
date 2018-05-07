@@ -48,7 +48,7 @@ public class LoginPersenter extends BasePresenterImpl<LoginContact.View> impleme
                 .subscribe(new BaseObserver<LoginBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        addDisposable(d);
+                        addDisposable(d);//添加流的控制
                     }
 
                     @Override
