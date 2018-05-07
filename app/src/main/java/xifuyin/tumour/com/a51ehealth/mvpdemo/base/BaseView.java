@@ -7,4 +7,13 @@ package xifuyin.tumour.com.a51ehealth.mvpdemo.base;
 public interface BaseView {
 
 
+
+    void  showLoadingDialog();
+
+
+
+
+    void  dissmassLoadingDialog();
+
+
 }
