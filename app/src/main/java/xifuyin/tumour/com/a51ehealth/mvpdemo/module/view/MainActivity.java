@@ -64,11 +64,10 @@ public class MainActivity extends BaseShowErrorActivity<LoginPersenter> implemen
     }
 
 
-
     @Override
-    protected void onError() {
-
+    protected void onRetry() {
         Persenter.getData();
     }
+
 
 }

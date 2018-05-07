@@ -14,8 +14,8 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.dialog.LoadingDialog;
 
 /**
  * Created by Administrator on 2018/5/7.
- *
- *
+ * <p>
+ * <p>
  * 带有加载失败的UI
  */
 
@@ -39,7 +39,9 @@ public abstract class BaseShowErrorActivity<P extends BasePresenter> extends App
         error_layout = findViewById(R.id.error_layout);
         error_btn = findViewById(R.id.error_btn);
         LayoutInflater.from(this).inflate(getLayout(), container, true);
-        error_btn.setOnClickListener((view -> {onRetry();}));
+        error_btn.setOnClickListener((view -> {
+            onRetry();
+        }));
         act = this;
 
         initView(savedInstanceState);
@@ -68,7 +70,7 @@ public abstract class BaseShowErrorActivity<P extends BasePresenter> extends App
     protected void onDestroy() {
 
         Persenter.detach();//在presenter中解绑释放view
-
+        Persenter = null;
         super.onDestroy();
 
     }
