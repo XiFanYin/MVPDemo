@@ -23,23 +23,38 @@ public abstract class BaseFragment extends Fragment {
     protected boolean isViewInitiated; //当前页面是否初始化
     protected boolean isVisibleToUser; //当前页面是否显示
     protected boolean isDataRequested; //是否已经请求了数据
-    protected Context mContext;
+    public Context mContext;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         mContext = getContext();
-        mView = inflater.inflate(getLayoutId(), null);
+        mView = inflater.inflate(getLayoutId2(), null);
         isViewInitiated = true;
-        initView(mView);
-        initListener();
+        initView2(mView);
+        initListener2();
         prepareGetData();
         return mView;
     }
 
+    protected void initListener2() {
+        initListener();
+    }
+    protected abstract void initListener();
+
+
+
+    protected void initView2(View mView) {
+        initView(mView);
+    }
+
     /*初始化页面布局和数据*/
     protected abstract void initView(View view);
+
+    /*布局*/
+    public int getLayoutId2() {
+        return getLayoutId();
+    }
 
     /*布局*/
     public abstract int getLayoutId();
@@ -47,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
     /*服务器获取数据*/
     protected abstract void getData();
 
-    protected abstract void initListener();
+
 
     /**
      * 当前页面是否展示
@@ -94,8 +109,6 @@ public abstract class BaseFragment extends Fragment {
 
     protected void initBar() {
     }
-
-
 
 
 }
