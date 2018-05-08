@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
             }
         };
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(4); //预加载
+        mViewPager.setOffscreenPageLimit(4); //预加载,只去find设置监听，但是不去联网请求数据
         // 绑定ViewPager
         bnve.setupWithViewPager(mViewPager);
 

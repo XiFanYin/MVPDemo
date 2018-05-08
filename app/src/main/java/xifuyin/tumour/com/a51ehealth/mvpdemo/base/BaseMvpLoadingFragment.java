@@ -35,6 +35,7 @@ public abstract class BaseMvpLoadingFragment<P extends BasePresenter> extends Ba
             Persenter.detach();
         }
         isViewInitiated = false;
+        isDataRequested = false;
         super.onDestroyView();
     }
 
