@@ -45,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getLayoutId();
 
     /*服务器获取数据*/
-    protected abstract void getData(boolean hasNetWork);
+    protected abstract void getData();
 
     protected abstract void initListener();
 
@@ -84,7 +84,7 @@ public abstract class BaseFragment extends Fragment {
         }
         if (isVisibleToUser && isViewInitiated && (!isDataRequested || isforceUpdate)) {
             /*从服务器获取数据*/
-            getData(NetworkDetector.isNetworkReachable());
+            getData();
             isDataRequested = true;
             return true;
         }
@@ -95,17 +95,7 @@ public abstract class BaseFragment extends Fragment {
     protected void initBar() {
     }
 
-    ;
-
-    /**
-     * 弹出吐司,子类里边也可以
-     *
-     * @param msg
-     */
-    public void showToast(final String msg) {
-
-        Toast.makeText(App.getApplication(), msg, Toast.LENGTH_SHORT).show();
 
 
-    }
+
 }

@@ -30,7 +30,7 @@ public class ThereFragment extends BaseFragment {
     }
 
     @Override
-    protected void getData(boolean hasNetWork) {
+    protected void getData() {
 
     }
 

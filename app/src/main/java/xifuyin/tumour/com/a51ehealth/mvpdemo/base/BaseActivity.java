@@ -25,6 +25,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView2(savedInstanceState);
 
         initListener2();
+
+        getData();
     }
 
 
@@ -47,4 +49,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract void initListener();
+
+    public void getData() {
+    }
+
+    ;
 }

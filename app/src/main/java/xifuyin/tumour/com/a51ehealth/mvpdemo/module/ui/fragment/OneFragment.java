@@ -1,5 +1,6 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,13 +27,16 @@ public class OneFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-
+        Log.e("rrrrrrr","OneFragmentinitListener");
     }
 
     @Override
-    protected void getData(boolean hasNetWork) {
+    protected void getData() {
+        Log.e("rrrrrrr","OneFragmentgetData");
 
     }
+
+
 
 
 }

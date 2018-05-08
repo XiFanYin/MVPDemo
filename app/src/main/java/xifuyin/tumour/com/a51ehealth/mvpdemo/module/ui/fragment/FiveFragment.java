@@ -30,7 +30,7 @@ public class FiveFragment extends BaseFragment {
     }
 
     @Override
-    protected void getData(boolean hasNetWork) {
+    protected void getData() {
 
     }
 

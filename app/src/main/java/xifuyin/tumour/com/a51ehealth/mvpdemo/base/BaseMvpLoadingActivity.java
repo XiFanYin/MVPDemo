@@ -21,13 +21,12 @@ public abstract class BaseMvpLoadingActivity<P extends BasePresenter> extends Ba
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         Persenter = initPersenter();
+        super.onCreate(savedInstanceState);
+
     }
 
     protected abstract P initPersenter();
-
-
 
 
     /**
