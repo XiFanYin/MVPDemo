@@ -66,6 +66,7 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
         }
     }
 
+
     //显示加载进度的提示
     @Override
     public <T> ObservableTransformer<T, T> LoadingDialog() {

@@ -1,10 +1,6 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter;
 
-import android.util.Log;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BasePresenterImpl;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.contact.LoginContact;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
@@ -42,6 +38,7 @@ public class LoginPersenter extends BasePresenterImpl<LoginContact.View> impleme
                     public void onSubscribe(Disposable d) {
                         addDisposable(d);//添加流的控制
                     }
+
                     @Override
                     public void onNext(LoginBean loginBean) {
                         View.setData(loginBean);
