@@ -1,42 +1,60 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseFragment;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseMvpShowErrorFragment;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.LoginPersenter;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.contact.LoginContact;
 
 /**
  * Created by Administrator on 2018/5/8.
  */
 
-public class OneFragment extends BaseFragment {
+public class OneFragment extends BaseMvpShowErrorFragment<LoginPersenter> implements LoginContact.View {
 
+    private TextView tv;
+
+    @Override
+    protected LoginPersenter initPersenter() {
+        return new LoginPersenter(this);
+    }
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment;
+        return R.layout.activity_test;
     }
 
     @Override
     protected void initView(View view) {
-        TextView tv = view.findViewById(R.id.tv);
-        tv.setText("OneFragment");
+
+        tv = view.findViewById(R.id.tv);
     }
 
     @Override
     protected void initListener() {
-        Log.e("rrrrrrr","OneFragmentinitListener");
+
     }
+
 
     @Override
     protected void getData() {
-        Log.e("rrrrrrr","OneFragmentgetData");
+
+        Persenter.getData();
 
     }
 
+    @Override
+    protected void onRetry() {
+        Persenter.getData();
+    }
 
-
-
+    @Override
+    public void setData(LoginBean loginBean) {
+        tv.setText(new Gson().toJson(loginBean));
+    }
 }

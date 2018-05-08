@@ -31,9 +31,10 @@ public class LoginPersenter extends BasePresenterImpl<LoginContact.View> impleme
                 .getInstance()
                 .create(API.class)
                 .Login("yinfeilong", "88888888")
-                .compose(CacheCompose.cache("eee"))
+//                .compose(CacheCompose.cache("eee"))
                 .compose(RxSchedulers.io_main())
                 .compose(LoadingDialog())
+                .compose(LoadingErrorView())
                 .subscribe(new BaseObserver<LoginBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
