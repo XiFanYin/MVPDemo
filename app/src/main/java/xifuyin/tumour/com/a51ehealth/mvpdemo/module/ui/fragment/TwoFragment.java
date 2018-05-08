@@ -44,7 +44,7 @@ public class TwoFragment extends BaseMvpShowErrorFragment<LoginPersenter> implem
 
 
     @Override
-    protected void getData() {
+    protected void getSerivceData() {
 
         Persenter.getData();
 

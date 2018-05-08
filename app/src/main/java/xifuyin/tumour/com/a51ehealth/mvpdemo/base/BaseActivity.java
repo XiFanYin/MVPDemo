@@ -26,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initListener2();
 
-        getData();
+        getSerivceData();
     }
 
 
@@ -50,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initListener();
 
-    public void getData() {
+    public void getSerivceData() {
     }
 
     ;

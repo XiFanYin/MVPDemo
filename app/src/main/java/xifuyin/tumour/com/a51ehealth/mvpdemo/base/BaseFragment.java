@@ -61,7 +61,7 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getLayoutId();
 
     /*服务器获取数据*/
-    protected abstract void getData();
+    protected abstract void getSerivceData();
 
 
 
@@ -102,7 +102,7 @@ public abstract class BaseFragment extends Fragment {
         }
         if (isVisibleToUser && isViewInitiated && (!isDataRequested || isforceUpdate)) {
             /*从服务器获取数据*/
-            getData();
+            getSerivceData();
             isDataRequested = true;
             return true;
         }

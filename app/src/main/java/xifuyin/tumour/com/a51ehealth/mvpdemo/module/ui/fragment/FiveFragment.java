@@ -43,7 +43,7 @@ public class FiveFragment extends BaseMvpShowErrorFragment<LoginPersenter> imple
 
 
     @Override
-    protected void getData() {
+    protected void getSerivceData() {
 
         Persenter.getData();
 

@@ -43,7 +43,7 @@ public class ThereFragment extends BaseMvpShowErrorFragment<LoginPersenter> impl
 
 
     @Override
-    protected void getData() {
+    protected void getSerivceData() {
 
         Persenter.getData();
 
