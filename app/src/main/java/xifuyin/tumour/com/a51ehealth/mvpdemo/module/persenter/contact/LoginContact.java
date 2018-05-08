@@ -1,4 +1,4 @@
-package xifuyin.tumour.com.a51ehealth.mvpdemo.module.contact;
+package xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.contact;
 
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BasePresenter;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseView;

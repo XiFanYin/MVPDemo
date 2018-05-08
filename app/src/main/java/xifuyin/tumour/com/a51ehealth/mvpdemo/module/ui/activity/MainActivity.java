@@ -1,4 +1,4 @@
-package xifuyin.tumour.com.a51ehealth.mvpdemo.module.view;
+package xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +9,9 @@ import com.google.gson.Gson;
 
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseMvpLoadingActivity;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseMvpShowErrorActivity;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.contact.LoginContact;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.LoginPersenter;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.persenter.contact.LoginContact;
 
 public class MainActivity extends BaseMvpLoadingActivity<LoginPersenter> implements View.OnClickListener, LoginContact.View {
 
