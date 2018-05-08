@@ -13,6 +13,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.net.schedulers.RxSchedulers;
 
 /**
  * Created by Administrator on 2018/5/4.
@@ -70,10 +71,8 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
     //显示加载进度的提示
     @Override
     public <T> ObservableTransformer<T, T> LoadingDialog() {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream
+        return upstream ->
+                upstream
                         .doOnSubscribe((disposable) -> {
                             View.showLoadingDialog();
                         })
@@ -81,17 +80,13 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
                             View.dissmassLoadingDialog();
 
                         });
-
-            }
-        };
     }
+
 
     //显示网络连接有问题的Ui
     public <T> ObservableTransformer<T, T> LoadingErrorView() {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream
+        return upstream ->
+                upstream
                         .doOnError((throwable -> {
                             if (throwable instanceof ConnectException || throwable instanceof SocketTimeoutException) {
                                 View.showErrorView();
@@ -104,8 +99,6 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter {
                             View.dissmassLoadingDialog();
                         });
 
-            }
-        };
     }
 
 

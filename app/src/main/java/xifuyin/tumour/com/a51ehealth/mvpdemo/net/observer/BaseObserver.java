@@ -25,7 +25,6 @@ public abstract class BaseObserver <T> implements Observer <T> {
         //异常，统一交给该处理的类去处理
         ApiErrorHelper.handleCommonError(App.getApplication(),e);
 
-        Log.e("rrrrrrrrerror",e.getMessage());
     }
 
     @Override
