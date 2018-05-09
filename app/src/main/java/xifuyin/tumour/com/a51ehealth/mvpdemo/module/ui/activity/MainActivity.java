@@ -1,20 +1,19 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Switch;
 
-import java.util.ArrayList;
+import com.gyf.barlibrary.ImmersionBar;
 
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseActivity;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment.FiveFragment;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment.FourFragment;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment.OneFragment;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment.ThereFragment;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.ui.fragment.TwoFragment;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.weight.bottomview.BottomNavigationViewEx;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.weight.bottomview.NoSlidingViewPaper;
 
 /**
  * Created by Administrator on 2018/5/8.
@@ -22,9 +21,10 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.weight.bottomview.NoSlidingViewPape
 
 public class MainActivity extends BaseActivity {
 
-    private NoSlidingViewPaper mViewPager;
-    private BottomNavigationViewEx bnve;
-    private final ArrayList<Fragment> fgLists = new ArrayList<>(5);
+
+    private NavigationView mNavigationView;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
 
     @Override
     public int getLayout() {
@@ -33,40 +33,43 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mViewPager = findViewById(R.id.content);
-        bnve = findViewById(R.id.bnve);
+        mNavigationView = findViewById(R.id.navigation_view);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        toolbar = findViewById(R.id.toolbar);
+
+    }
+
+    @Override
+    public void initBar() {
+        super.initBar();
+        mImmersionBar.titleBar(toolbar).init();
     }
 
     @Override
     protected void initListener() {
-        //开启放大动画
-        bnve.enableAnimation(false);
-        //关闭所有动画
-        bnve.enableShiftingMode(false);
-        bnve.enableItemShiftingMode(false);
 
-        //底部四个按钮对应的四个Fragment，其中 TwoFragment 中想去实现聚合会话列表，点进去进入会话页面
-        fgLists.add(new OneFragment());
-        fgLists.add(new TwoFragment());
-        fgLists.add(new ThereFragment());
-        fgLists.add(new FourFragment());
-        fgLists.add(new FiveFragment());
+        mNavigationView.setNavigationItemSelectedListener(item -> {
 
-        FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return fgLists.get(position);
+            switch (item.getItemId()) {
+                case R.id.action_news:
+
+                    break;
+                case R.id.action_video:
+
+                    break;
+                case R.id.action_photo:
+
+                    break;
+                case R.id.action_settings:
+
+                    break;
             }
+            item.setChecked(true);
+            drawerLayout.closeDrawer(GravityCompat.START);
 
-            @Override
-            public int getCount() {
-                return fgLists.size();
-            }
-        };
-        mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(4); //预加载,只去find设置监听，但是不去联网请求数据
-        // 绑定ViewPager
-        bnve.setupWithViewPager(mViewPager);
+            return false;
+        });
+
 
     }
 }

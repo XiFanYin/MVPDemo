@@ -5,7 +5,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
+
+import com.gyf.barlibrary.ImmersionBar;
+
+import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
 
 /**
  * Created by Administrator on 2018/5/8.
@@ -13,20 +16,31 @@ import android.view.Window;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public Activity act;
+    public ImmersionBar mImmersionBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         act = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//设制竖屏
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE); //隐藏掉系统原先的导航栏
+
         setContentView(getLayout2());
 
         initView2(savedInstanceState);
 
+        initBar();
+
         initListener2();
 
         getSerivceData();
+
+
+
+    }
+
+    public void initBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();
     }
 
 
@@ -53,5 +67,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void getSerivceData() {
     }
 
-    ;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mImmersionBar.destroy();
+    }
 }

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <xifuyin.tumour.com.a51ehealth.mvpdemo.weight.bottomview.NoSlidingViewPaper
-        android:id="@+id/content"
+    <!--主页面-->
+    <FrameLayout
+        android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent">
 
-    <xifuyin.tumour.com.a51ehealth.mvpdemo.weight.bottomview.BottomNavigationViewEx
-        android:id="@+id/bnve"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        app:itemIconTint="@color/icon_color"
-        app:itemTextColor="@color/icon_color"
-        app:menu="@menu/bottem_menu" />
+        <include layout="@layout/toolbar" />
 
-</LinearLayout>
+
+    </FrameLayout>
+
+    <!--侧滑菜单-->
+    <include layout="@layout/navigation_view" />
+
+
+</android.support.v4.widget.DrawerLayout>

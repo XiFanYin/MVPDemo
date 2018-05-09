@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_news"
+            android:checked="true"
+            android:icon="@drawable/ic_news_black"
+            android:title="新闻"/>
+
+        <item
+            android:id="@+id/action_video"
+            android:icon="@drawable/ic_ondemand_video_black"
+            android:title="视频"/>
+
+        <item
+            android:id="@+id/action_photo"
+            android:icon="@drawable/ic_insert_photo_black"
+            android:title="图片"/>
+
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_more_black"
+            android:title="设置"/>
+
+    </group>
+
+</menu>

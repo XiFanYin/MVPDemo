@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorAccent</item>
@@ -18,9 +18,8 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimAmount">0</item>
     </style>
-
+    <!--加载中的dialog样式-->
     <style name="myProgressBarStyleLarge">
-        　　
         <item name="android:indeterminateDrawable">@drawable/rotate_loading_icon</item>
         <item name="android:indeterminateDuration">1500</item>
         　　

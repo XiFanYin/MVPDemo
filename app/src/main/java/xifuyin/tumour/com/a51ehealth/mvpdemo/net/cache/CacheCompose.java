@@ -1,14 +1,5 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.net.cache;
 
-import android.util.Log;
-
-import io.reactivex.ObservableTransformer;
-import io.reactivex.schedulers.Schedulers;
-import io.rx_cache2.DynamicKey;
-import io.rx_cache2.EvictDynamicKey;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.net.utils.NetworkDetector;
-
 /**
  * Created by Administrator on 2018/5/7.
  * <p>
@@ -17,13 +8,13 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.net.utils.NetworkDetector;
 
 public class CacheCompose {
 
-    public static ObservableTransformer<LoginBean, LoginBean> cache(String key_flag) {
-
-        return upstream ->
-                CacheProviderUtils
-                .getInstance()
-                .using(Provider.class)
-                .getLogin(upstream, new DynamicKey(key_flag), new EvictDynamicKey(NetworkDetector.isNetworkReachable()));
-
-    }
+//    public static ObservableTransformer<LoginBean, LoginBean> cache(String key_flag) {
+//
+//        return upstream ->
+//                CacheProviderUtils
+//                .getInstance()
+//                .using(Provider.class)
+//                .getLogin(upstream, new DynamicKey(key_flag), new EvictDynamicKey(NetworkDetector.isNetworkReachable()));
+//
+//    }
 }

@@ -1,12 +1,6 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.net.cache;
 
 
-import io.reactivex.Observable;
-import io.rx_cache2.DynamicKey;
-import io.rx_cache2.EvictDynamicKey;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
-
-
 /**
  * 不配置，表示永久存储
  *
@@ -17,7 +11,7 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.module.model.LoginBean;
  */
 public interface Provider {
 
-    Observable<LoginBean> getLogin(Observable<LoginBean> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
+//    Observable<LoginBean> getLogin(Observable<LoginBean> oRepos, DynamicKey userName, EvictDynamicKey evictDynamicKey);
 
 
 }
