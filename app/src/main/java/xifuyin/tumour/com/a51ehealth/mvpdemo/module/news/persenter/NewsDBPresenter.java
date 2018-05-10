@@ -50,7 +50,7 @@ public class NewsDBPresenter extends BasePresenterImpl<NewsDBContact.view> imple
                     SPUtils.saveBoolean("initTable", true);
                 }
                 //查询前三个，返回,后期改成动态的
-                List<NewsDBTable> newsDBTables = new Select().from(NewsDBTable.class).queryList().subList(0, 3);
+                List<NewsDBTable> newsDBTables = new Select().from(NewsDBTable.class).queryList().subList(0, 15);
                 e.onNext(newsDBTables);
             }
         })

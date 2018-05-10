@@ -68,8 +68,6 @@ public class NewsActivity extends BaseMvpLoadingActivity<NewsDBPresenter> implem
     @Override
     public void initBar() {
         super.initBar();
-        //设置状态栏不遮盖侧滑菜单
-        mImmersionBar.titleBar(toolbar).init();
         //设置页面标题
         toolbar.setTitle("新闻");
         //设置页面标题颜色
