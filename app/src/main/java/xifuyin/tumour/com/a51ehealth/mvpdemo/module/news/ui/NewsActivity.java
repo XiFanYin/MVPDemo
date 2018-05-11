@@ -3,23 +3,25 @@ package xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.design.widget.TabLayout;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseMvpLoadingActivity;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.module.image.ui.ImageActivity;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.db.NewsDBTable;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.image.ui.ImageActivity;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.persenter.NewsDBPresenter;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.persenter.contact.NewsDBContact;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui.adapter.TableAdapter;
@@ -43,6 +45,7 @@ public class NewsActivity extends BaseMvpLoadingActivity<NewsDBPresenter> implem
     private ArrayList<String> titles = new ArrayList<>();
     private TableAdapter adapter;
     private TabLayout table_layout;
+    private AppBarLayout appbar;
 
 
     @Override
@@ -62,6 +65,7 @@ public class NewsActivity extends BaseMvpLoadingActivity<NewsDBPresenter> implem
         toolbar = findViewById(R.id.toolbar);
         table_layout = findViewById(R.id.table_layout);
         view_pager = findViewById(R.id.viewpager);
+        appbar = findViewById(R.id.appbar);
 
     }
 
@@ -126,6 +130,17 @@ public class NewsActivity extends BaseMvpLoadingActivity<NewsDBPresenter> implem
             return false;
         });
 
+        //解决SwipeRefreshLayout与CoordinatorLayout冲突
+        appbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (verticalOffset >= 0) {
+
+                } else {
+
+                }
+            }
+        });
 
     }
 

@@ -1,18 +1,13 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Arrays;
-import java.util.List;
+import org.greenrobot.eventbus.EventBus;
 
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
-import xifuyin.tumour.com.a51ehealth.mvpdemo.app.App;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseFragment;
 
 /**
@@ -23,7 +18,8 @@ public class NewsListFragment extends BaseFragment {
 
     protected static final String NEWS_ID = "news_id";
     private String mNewsId;
-    private TextView tv;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -49,16 +45,26 @@ public class NewsListFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        tv = view.findViewById(R.id.tv);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        recyclerView = view.findViewById(R.id.recyclerView);
+
+
     }
+
     @Override
     protected void initListener() {
-        tv.setText(mNewsId);
+
     }
 
 
     @Override
     protected void getSerivceData() {
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
