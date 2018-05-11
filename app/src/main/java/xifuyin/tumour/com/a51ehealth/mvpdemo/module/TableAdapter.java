@@ -1,4 +1,4 @@
-package xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui.adapter;
+package xifuyin.tumour.com.a51ehealth.mvpdemo.module;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

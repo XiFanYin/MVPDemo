@@ -1,14 +1,22 @@
 package xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.app.App;
 import xifuyin.tumour.com.a51ehealth.mvpdemo.base.BaseFragment;
+import xifuyin.tumour.com.a51ehealth.mvpdemo.module.news.ui.adapter.TestAdapter;
 
 /**
  * Created by Administrator on 2018/5/10.
@@ -54,6 +62,25 @@ public class NewsListFragment extends BaseFragment {
     @Override
     protected void initListener() {
 
+        List<String> channelId = Arrays.asList(App.getApplication().getResources().getStringArray(R.array.news_channel_id));
+        //设置布局为垂直布局
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        TestAdapter adapter = new TestAdapter(android.R.layout.simple_list_item_1, channelId);
+        recyclerView.setAdapter(adapter);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        swipeRefreshLayout.setEnabled(true);
+                    }
+                }, 10000);
+            }
+        });
     }
 
 
@@ -65,6 +92,6 @@ public class NewsListFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+
     }
 }
