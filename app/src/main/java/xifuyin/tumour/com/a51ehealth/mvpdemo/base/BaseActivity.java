@@ -12,6 +12,7 @@ import xifuyin.tumour.com.a51ehealth.mvpdemo.R;
 
 /**
  * Created by Administrator on 2018/5/8.
+ * 实际开发时候，根据实际情况可以吧Base抽出来的类进行合并，这里写了单个base目的是为了在学习时候好看每个页面的功能都有哪些而已
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -33,7 +34,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         initListener2();
 
         getSerivceData();
-
 
 
     }
